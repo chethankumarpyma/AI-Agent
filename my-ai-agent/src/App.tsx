@@ -1,40 +1,56 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+import Sidebar from "./components/SideBar";
 
+import Dashboard from "./pages/Dashboard";
+import Projects from "./pages/Projects";
+import ContentStudio from "./pages/ContentStudio";
+import MediaLibrary from "./pages/MediaLibrary";
+import ContentCalendar from "./pages/ContentCalendar";
+
+export default function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <BrowserRouter>
+
+      <div className="app">
+
+        <Sidebar />
+
+        <div className="main">
+
+          <Routes>
+
+            <Route
+              path="/"
+              element={<Dashboard />}
+            />
+
+            <Route
+              path="/projects"
+              element={<Projects />}
+            />
+
+            <Route
+              path="/studio"
+              element={<ContentStudio />}
+            />
+
+            <Route
+              path="/media"
+              element={<MediaLibrary />}
+            />
+
+            <Route
+              path="/calendar"
+              element={<ContentCalendar />}
+            />
+
+          </Routes>
+
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
+      </div>
 
-
-    </>
-  )
+    </BrowserRouter>
+  );
 }
-
-export default App
