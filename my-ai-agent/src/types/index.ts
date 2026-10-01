@@ -8,6 +8,8 @@ export type ProjectStatus =
   | "Published";
 
 export interface VillageProject {
+  updatedAt: string | number | Date;
+  description: ReactNode;
   id: string;
   name: string;
   district: string;
